@@ -8,11 +8,11 @@ using System.Threading.Tasks;
 
 namespace Application.Dtos.Blogs.Maps
 {
-    public class BlogProfile : Profile
+    public class BlogFromProfile : Profile
     {
-        public BlogProfile() 
+        public BlogFromProfile() 
         {
-            CreateMap<Blog, BlogDto>();
-        }
+            CreateMap<Blog, BlogFormDto>().ReverseMap();
+        }    
     }
 }

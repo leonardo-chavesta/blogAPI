@@ -25,11 +25,13 @@ namespace Infraestructure.Context
         }
 
          public DbSet<Perfil> Perfiles { get; set; }
+        public DbSet<Blog> Blogs { get; set; }  
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
             modelBuilder.ApplyConfiguration(new PerfilMaps());
+            modelBuilder.ApplyConfiguration(new BlogMaps());    
         }
     }
 }

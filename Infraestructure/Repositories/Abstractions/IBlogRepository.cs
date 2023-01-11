@@ -11,7 +11,8 @@ namespace Infraestructure.Repositories.Abstractions
     {
         Task<IList<Blog>> ListaBlogs();
         Task<Blog?> Buscar(int id);
-
+        Task<Blog> CrearBlog(Blog entity);
         Task<Blog?> EditBlog(int id, Blog entity);
+        Task<Blog?> Eliminar(int id);
     }
 }

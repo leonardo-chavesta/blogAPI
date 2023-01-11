@@ -13,5 +13,8 @@ namespace Application.Services.Abstractions
         Task<BlogDto?> Buscar(int id);
         Task<IList<BlogDto>> ListaBlogs();
         Task<BlogDto?> EditBlog(int id, BlogFormDto entity);
+
+        Task<BlogDto> CrearBlog(BlogFormDto entity);
+        Task<BlogDto?> Eliminar(int id);
     }
 }

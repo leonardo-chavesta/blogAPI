@@ -30,12 +30,28 @@ namespace Application.Services.Implementations
             return _mapper.Map<BlogDto?>(response);
         }
 
+        public async Task<BlogDto> CrearBlog(BlogFormDto entity)
+        {
+            var dto = _mapper.Map<Blog>(entity);
+
+            var response = await _blogRepository.CrearBlog(dto);
+
+            return _mapper.Map<BlogDto>(response);
+        }
+
         public async Task<BlogDto?> EditBlog(int id, BlogFormDto entity)
         {
             
             var dto = _mapper.Map<Blog>(entity);
 
             var response = await _blogRepository.EditBlog(id,dto);
+
+            return _mapper.Map<BlogDto>(response);
+        }
+
+        public async Task<BlogDto?> Eliminar(int id)
+        {
+            var response = await _blogRepository.Eliminar(id);
 
             return _mapper.Map<BlogDto>(response);
         }

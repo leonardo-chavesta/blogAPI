@@ -22,6 +22,14 @@ namespace Infraestructure.Repositories.Implementacions
         public async Task<Blog?>Buscar(int id)
         => await _context.Blogs.FindAsync(id);
 
+        public async Task<Blog> CrearBlog(Blog entity)
+        {
+            _context.Add(entity);
+            await _context.SaveChangesAsync();
+
+            return entity;
+        }
+
         public async Task<Blog?> EditBlog(int id, Blog entity)
         {    
             var model = await _context.Blogs.FindAsync(id);
@@ -34,7 +42,23 @@ namespace Infraestructure.Repositories.Implementacions
             return model;
         }
 
+        
+
         public async Task<IList<Blog>>ListaBlogs()
            => await _context.Blogs.OrderByDescending(e => e.Id).ToListAsync();
+
+        public async Task<Blog?> Eliminar(int id)
+        {
+            var model = await _context.Blogs.FindAsync(id);
+            if (model != null)
+            {
+                model.Estado = (model.Estado == 0) ? 1 : 0;
+
+                _context.Blogs.Update(model);
+                await _context.SaveChangesAsync();
+            }
+
+            return model;
+        }
     }
 }

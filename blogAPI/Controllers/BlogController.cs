@@ -29,10 +29,10 @@ namespace blogAPI.Controllers
 
             return TypedResults.Ok(response);
         }
-        [HttpPut("Comentar/{id}")]
+        [HttpPost("Comentar/{id}")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(BlogDto))]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<Results< NotFound,Ok<BlogDto>>> Put(int id , [FromBody] BlogFormDto request)
+        public async Task<Results< NotFound,Ok<BlogDto>>> Post(int id , [FromBody] BlogsComentFormDto request)
         {
             var response = await _blogService.EditBlog(id, request);
 

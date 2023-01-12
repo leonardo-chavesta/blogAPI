@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace Application.Dtos.Blogs
 {
-    public class BlogFormDto
+    public class BlogsComentFormDto
     {
-        public string? Titulo { get; set; }
-        public string? Descripcion { get; set; }
+        public string? Comentario { get; set; }
     }
 }

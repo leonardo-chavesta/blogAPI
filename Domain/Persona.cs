@@ -6,15 +6,14 @@ using System.Threading.Tasks;
 
 namespace Domain
 {
-    public class Blog
+    public class Persona
     {
         public int Id { get; set; }
-        public string? Titulo { get; set; }
-        public string? Descripcion { get; set; }
-        public string? Comentario { get; set; }
+        public string? Nombre { get; set; }
+        public string? Apellido { get; set; }
+        public int? Estado { get; set; } = 1;
         public DateTime? FechaRegistro { get; set; } = DateTime.Now;
-        public int Estado { get; set; } = 1;
-
-        //public virtual Usuario  { get; set; }
+        public int? IdPerfil { get; set; }
+        public virtual Perfil? Perfil { get; set; }
     }
 }

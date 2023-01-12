@@ -24,14 +24,19 @@ namespace Infraestructure.Context
             optionsBuilder.UseSqlServer(_configuration.GetConnectionString("DBConnection"));
         }
 
-         public DbSet<Perfil> Perfiles { get; set; }
+        public DbSet<Perfil> Perfiles { get; set; }
         public DbSet<Blog> Blogs { get; set; }  
+        public DbSet<Coment> Coments { get; set; }
+        public DbSet<Persona> Personas { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
             modelBuilder.ApplyConfiguration(new PerfilMaps());
-            modelBuilder.ApplyConfiguration(new BlogMaps());    
+            modelBuilder.ApplyConfiguration(new BlogMaps());
+            modelBuilder.ApplyConfiguration(new ComentsMaps());
+            modelBuilder.ApplyConfiguration(new PersonaMaps());
+
         }
     }
 }

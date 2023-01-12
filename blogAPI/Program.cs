@@ -3,6 +3,9 @@ using Autofac;
 using System.Reflection;
 using Infraestructure.Context;
 
+
+string _MyCors = "MyCors";
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -29,6 +32,17 @@ builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory())
        .InstancePerLifetimeScope();
     });
 
+builder.Services.AddCors(options => {
+    {
+        options.AddPolicy(name: _MyCors, builder =>
+        {
+            builder.SetIsOriginAllowed(origin => new Uri(origin).Host == "localhost")
+            .AllowAnyHeader()
+            .AllowAnyMethod();
+        });
+    } 
+});
+
 builder.Services.AddAutoMapper(Assembly.Load("Application"));
 
 var app = builder.Build();
@@ -39,9 +53,10 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
+app.UseCors(_MyCors);
 app.UseAuthorization();
 
 app.MapControllers();
 
 app.Run();
+

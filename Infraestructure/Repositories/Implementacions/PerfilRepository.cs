@@ -23,6 +23,6 @@ namespace Infraestructure.Repositories.Implementacions
          => await _context.Perfiles.FindAsync(id);
 
         public async Task<IList<Perfil>> ListaPerfil()
-         => await _context.Perfiles.OrderByDescending(e => e.Id).ToListAsync();
+         => await _context.Perfiles.Where(x => x.Estado == 1).OrderByDescending(e => e.Id).ToListAsync();
     }
 }

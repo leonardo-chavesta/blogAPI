@@ -9,19 +9,18 @@ using System.Threading.Tasks;
 
 namespace Infraestructure.ModelMaps
 {
-    public class BlogMaps : IEntityTypeConfiguration<Blog>
+    public class ComentsMaps : IEntityTypeConfiguration<Coment>
     {
-        public void Configure(EntityTypeBuilder<Blog> builder)
+        public void Configure(EntityTypeBuilder<Coment> builder)
         {
-            builder.ToTable("BLOG");
+            builder.ToTable("COMENTARIO_BLOG");
             builder.HasKey(x => x.Id);
-            builder.Property(x => x.Titulo).HasColumnName("TITULO");
-            builder.Property(x => x.Descripcion).HasColumnName("DESCRIPCION");
-            builder.Property(x => x.Estado).HasColumnName("ESTADO");
+            builder.Property(x => x.Id).HasColumnName("ID");
             builder.Property(x => x.Comentario).HasColumnName("COMENTARIO");
+            builder.Property(x => x.IdUsuario).HasColumnName("ID_USUARIO");
+            builder.Property(x => x.IdBlog).HasColumnName("ID_BLOG");
             builder.Property(x => x.FechaRegistro).HasColumnName("FECHA_REGISTRO");
-
-            //builder.HasOne(t => t.).WithMany(t => t.Libros).HasForeignKey(t => t.IdEditorial);
+            builder.Property(x => x.Estado).HasColumnName("ESTADO");
         }
     }
 }

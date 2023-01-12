@@ -6,11 +6,14 @@ using System.Threading.Tasks;
 
 namespace Domain
 {
-    public class Perfil
+    public class Coment
     {
         public int Id { get; set; }
-        public string Nombre { get; set; }
+        public string? Comentario { get; set; }
+        public int IdUsuario { get; set; }
+        public int IdBlog { get; set; }
+        public DateTime FechaRegistro { get; set; } = DateTime.Now;
         public int Estado { get; set; } = 1;
-        public virtual IList<Persona> Personas { get; set; }
+
     }
 }

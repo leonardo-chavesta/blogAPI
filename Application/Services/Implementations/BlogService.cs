@@ -39,7 +39,7 @@ namespace Application.Services.Implementations
             return _mapper.Map<BlogDto>(response);
         }
 
-        public async Task<BlogDto?> EditBlog(int id, BlogFormDto entity)
+        public async Task<BlogDto?> EditBlog(int id, BlogsComentFormDto entity)
         {
             
             var dto = _mapper.Map<Blog>(entity);

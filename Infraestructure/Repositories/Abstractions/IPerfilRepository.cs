@@ -11,5 +11,7 @@ namespace Infraestructure.Repositories.Abstractions
     {
         Task<IList<Perfil>> ListaPerfil();
         Task<Perfil?> Buscar(int id);
+        
+         
     }
 }
